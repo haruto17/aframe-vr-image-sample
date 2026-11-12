@@ -6,4 +6,6 @@
 
 !/.vscode/settings.json
 
+!/assets/images/*.jpeg
+
 !/index.html
