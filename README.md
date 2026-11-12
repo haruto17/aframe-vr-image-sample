@@ -1,6 +1,7 @@
 # aframe-vr-image-sample
 
-A-Frame を使って VR 空間に画像を表示するサンプル
+A-Frame を使って VR 空間に画像を表示するサンプル  
+https://haruto17.github.io/aframe-vr-image-sample/
 
 ## 解説
 
