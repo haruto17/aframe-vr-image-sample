@@ -8,15 +8,37 @@
   <body>
     <a-scene>
       <a-assets>
-        <img id="my-image" src="./assets/images/alpine-peaks.jpeg" />
+        <img id="img-0" src="./assets/images/alpine-peaks.jpeg" />
+        <img id="img-1" src="./assets/images/desert-arch.jpeg" />
+        <img id="img-2" src="./assets/images/glacial-lagoon.jpeg" />
+        <img id="img-3" src="./assets/images/mountain-lake.jpeg" />
+        <img id="img-4" src="./assets/images/volcanic-crater.jpeg" />
       </a-assets>
 
-      <a-image
-        src="#my-image"
-        width="2"
-        height="2"
-        position="0 1.6 -3"
-      ></a-image>
+      <a-image id="photo" width="2" height="2" position="0 1.6 -3"></a-image>
     </a-scene>
+
+    <script>
+      const imageIds = ["#img-0", "#img-1", "#img-2", "#img-3", "#img-4"];
+      const photo = document.getElementById("photo");
+      let current = -1;
+
+      function getRandomIndex() {
+        if (imageIds.length <= 1) return 0;
+        let next;
+        do {
+          next = Math.floor(Math.random() * imageIds.length);
+        } while (next === current);
+        return next;
+      }
+
+      function setRandomImage() {
+        current = getRandomIndex();
+        photo.setAttribute("src", imageIds[current]);
+      }
+
+      setRandomImage();
+      setInterval(setRandomImage, 10000);
+    </script>
   </body>
 </html>
