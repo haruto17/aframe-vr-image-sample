@@ -3,10 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <title>aframe-vr-image-sample</title>
+    <!-- A-Frame を使えるようにする -->
     <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
   </head>
   <body>
+    <!-- VR シーン -->
     <a-scene>
+      <!-- 画像を先に読み込んでおく -->
       <a-assets>
         <img id="img-0" src="./assets/images/alpine-peaks.jpeg" />
         <img id="img-1" src="./assets/images/desert-arch.jpeg" />
@@ -15,16 +18,28 @@
         <img id="img-4" src="./assets/images/volcanic-crater.jpeg" />
       </a-assets>
 
+      <!-- 画像を表示する -->
       <a-image id="photo" width="2" height="2" position="0 1.6 -3"></a-image>
     </a-scene>
 
+    <!-- script タグで囲った中に実行したい処理を書く -->
     <script>
+      // 画像 id の配列
       const imageIds = ["#img-0", "#img-1", "#img-2", "#img-3", "#img-4"];
+
+      // 画像をセットするために、表示部分を取得する
       const photo = document.getElementById("photo");
+
+      // 現在の配列の index
+      // 初期値は -1 （なにも表示しない）
       let current = -1;
 
+      // ランダムな index を返す関数
       function getRandomIndex() {
+        // 画像 id の配列が空のときは 0 を返す
         if (imageIds.length <= 1) return 0;
+
+        // ランダムな index を決める
         let next;
         do {
           next = Math.floor(Math.random() * imageIds.length);
@@ -32,12 +47,22 @@
         return next;
       }
 
+      // ランダムな画像をセットする関数
       function setRandomImage() {
+        // getRandomIndex() の実行結果を current 変数に代入する
         current = getRandomIndex();
+
+        // src 属性を更新する
         photo.setAttribute("src", imageIds[current]);
       }
 
+      // 変数 current の初期値は -1 で、本来ページが読み込まれたときは何も表示されない。
+      // ここで setRandomImage() を呼ぶことで最初の画像がセットされる。
       setRandomImage();
+
+      // 一定間隔で setRandomImage() を実行する。
+      // setInterval(実行したい関数、間隔)
+      // 間隔はミリ秒で指定する。この場合 10000ms = 10s
       setInterval(setRandomImage, 10000);
     </script>
   </body>

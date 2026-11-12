@@ -3,6 +3,7 @@
 !.gitignore
 
 !/README.md
+!/right_handed_coordinate_system_aframe.png
 
 !/.vscode/settings.json
 
